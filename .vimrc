@@ -46,3 +46,4 @@ let NERDTreeQuitOnOpen = 1
 " ALIAS / REMAPPING
 let mapleader = ","
 nmap <leader>f :NERDTreeToggle<cr> " type ,f to toggle tree
+
