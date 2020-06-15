@@ -1,0 +1,6 @@
+# Ignore Everyfile
+*
+
+# Except my .vimrc
+!.gitignore
+!.vimrc
