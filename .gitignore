@@ -4,3 +4,4 @@
 # Except my .vimrc
 !.gitignore
 !.vimrc
+!.md
