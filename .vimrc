@@ -8,6 +8,13 @@ call vundle#begin('C:/Users/Daymian/Vim/vimfiles/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -47,3 +54,20 @@ let NERDTreeQuitOnOpen = 1
 let mapleader = ","
 nmap <leader>f :NERDTreeToggle<cr> " type ,f to toggle tree
 
+" OMNISHARP AUTOCOMPLETION SETTINGS
+set completeopt=menuone,noinsert,noselect,preview
+let g:asyncomplete_auto_popup = 1
+let g:asyncomplete_auto_completeopt = 0
+let g:asyncomplete_force_refresh_on_context_changed = 1
+
+let g:OmniSharp_server_stdio = 1
+let g:OmniSharp_highlight_types = 2
+
+" if using ultisnips, set g:OmniSharp_want_snippet to 1
+let g:OmniSharp_want_snippet = 1
+
+" Automatically enable syntax highlighting
+syntax on
+
+" Automatically start vim in fullscreen mode
+autocmd GUIEnter * simalt ~x
