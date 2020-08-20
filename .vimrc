@@ -71,3 +71,28 @@ syntax on
 
 " Automatically start vim in fullscreen mode
 autocmd GUIEnter * simalt ~x
+
+" Automatically indent new lines
+set autoindent
+set smartindent
+
+" Spaces for tab setting
+set tabstop=4
+set shiftwidth=4
+
+" Show line numbers
+set number
+
+" Match open / close braces
+set showmatch
+
+" highlight matching items in /search
+set hlsearch
+
+" Cursor position
+set scrolloff=5
+
+" Permanent status bar
+set laststatus=2
+
+
