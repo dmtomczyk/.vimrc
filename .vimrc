@@ -4,20 +4,22 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=C:/Users/Daymian/Vim/vimfiles/bundle/Vundle.vim/
 call vundle#begin('C:/Users/Daymian/Vim/vimfiles/bundle/')
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'ryanoasis/vim-devicons'
-Plugin 'OmniSharp/omnisharp-vim'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/async.vim'
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'dense-analysis/ale'
-Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
-" All of your Plugins must be added before the following line
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'preservim/nerdtree'
+    Plugin 'ryanoasis/vim-devicons'
+    Plugin 'OmniSharp/omnisharp-vim'
+    Plugin 'prabirshrestha/asyncomplete.vim'
+    Plugin 'prabirshrestha/async.vim'
+    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf.vim'
+    Plugin 'dense-analysis/ale'
+    Plugin 'mg979/vim-visual-multi', {'branch': 'master'}
+	Plugin 'bignimbus/you-are-here.vim'
 call vundle#end()            " required
-filetype plugin indent on    " required
+
+" Syntax, et al
+filetype plugin indent on
+syntax on
 
 autocmd vimenter * NERDTree
 
@@ -49,6 +51,12 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeQuitOnOpen = 1
+let NERDTreeWinSize = 40
+
+" You-are-here.vim map
+nnoremap <silent> <leader>here :call you_are_here#Toggle()<CR>
+
+
 
 " ALIAS / REMAPPING
 let mapleader = ","
@@ -59,22 +67,17 @@ set completeopt=menuone,noinsert,noselect,preview
 let g:asyncomplete_auto_popup = 1
 let g:asyncomplete_auto_completeopt = 0
 let g:asyncomplete_force_refresh_on_context_changed = 1
-
 let g:OmniSharp_server_stdio = 1
 let g:OmniSharp_highlight_types = 2
 
 " if using ultisnips, set g:OmniSharp_want_snippet to 1
-let g:OmniSharp_want_snippet = 1
-
-" Automatically enable syntax highlighting
-syntax on
+" let g:OmniSharp_want_snippet = 1
 
 " Automatically start vim in fullscreen mode
 autocmd GUIEnter * simalt ~x
 
 " Automatically indent new lines
 set autoindent
-set smartindent
 
 " Spaces for tab setting
 set tabstop=4
@@ -95,4 +98,36 @@ set scrolloff=5
 " Permanent status bar
 set laststatus=2
 
+" Enable mouse scrolling
+set mouse=a
 
+" FOLDING XML
+augroup XML
+    autocmd!
+    autocmd FileType xml let g:xml_syntax_folding=1
+    autocmd FileType xml setlocal foldmethod=syntax
+    autocmd FileType xml :syntax on
+    autocmd FileType xml :%foldopen!
+augroup END
+
+"           Scroll Wheel = Up/Down 4 lines
+"           Shift + Scroll Wheel = Up/Down 1 page
+"           Control + Scroll Wheel = Up/Down 1/2 page
+"           Meta + Scroll Wheel = Up/Down 1 line
+
+noremap <ScrollWheelUp>     4<C-Y>
+noremap <ScrollWheelDown>   4<C-E>
+noremap <S-ScrollWheelUp>   <C-B>
+noremap <S-ScrollWheelDown> <C-F>
+noremap <C-ScrollWheelUp>   <C-U>
+noremap <C-ScrollWheelDown> <C-D>
+noremap <M-ScrollWheelUp>   <C-Y>
+noremap <M-ScrollWheelDown> <C-E>
+inoremap <ScrollWheelUp>     <C-O>4<C-Y>
+inoremap <ScrollWheelDown>   <C-O>4<C-E>
+inoremap <S-ScrollWheelUp>   <C-O><C-B>
+inoremap <S-ScrollWheelDown> <C-O><C-F>
+inoremap <C-ScrollWheelUp>   <C-O><C-U>
+inoremap <C-ScrollWheelDown> <C-O><C-D>
+inoremap <M-ScrollWheelUp>   <C-O><C-Y>
+inoremap <M-ScrollWheelDown> <C-O><C-E>
